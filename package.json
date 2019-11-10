@@ -1,0 +1,25 @@
+{
+  "name": "postmatch.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "liri.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamzh88/postmatch.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kamzh88/postmatch.github.io/issues"
+  },
+  "homepage": "https://github.com/kamzh88/postmatch.github.io#readme",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.2.0",
+    "moment": "^2.24.0"
+  }
+}
