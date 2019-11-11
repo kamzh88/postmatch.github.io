@@ -6,6 +6,6 @@ exports.spotify = {
     secret: process.env.SPOTIFY_SECRET
 };
 
-exports.omdbapi = {
-    id: process.env.OMDBAPI_ID
-}
+exports.omdbapi = process.env.OMDBAPI_ID;
+
+exports.bitApi = process.env.BITAPI_ID;
