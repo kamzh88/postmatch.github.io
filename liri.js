@@ -41,7 +41,7 @@ switch (action) {
         spotifyAPI();
         break;
 
-    
+
     default:
         console.log("invalid input");
 }
@@ -67,19 +67,14 @@ function concertAPI() {
 
 function spotifyAPI() {
 
-    spotify.search({ type: 'track', query: value, limit: 1}, function (err, data) {
+    spotify.search({ type: 'track', query: value, limit: 1 }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        console.log(data.tracks.items[0].name);
-
-        // JSON.parse(data);
-        // var m = data;
-        // JSON.parse(m);
-        // console.log(m);
-        // var obj = JSON.parse(data);        
-        // console.log("spotify data: " + obj.result);
-
+        console.log(`Name of Artists: ${data.tracks.items[0].album.artists[0].name}`);
+        console.log(`Name of Song: ${data.tracks.items[0].name}`);
+        console.log(`Album name: ${data.tracks.items[0].album.album_type}`);
+        console.log(`Preview song: ${data.tracks.items[0].preview_url}`);
     });
 }
 
