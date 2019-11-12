@@ -1,4 +1,5 @@
 require("dotenv").config();
+var moment = require("moment");
 
 var keys = require("./keys.js");
 var axios = require("axios");
@@ -21,7 +22,7 @@ var value = nodeArgs.slice(3).join(" ");
 
 
 var movieURL = `http://www.omdbapi.com/?y=&plot=short&t=${value}&apikey=${omdbApiKey}`;
-var concertURL = `https://rest.bandsintown.com/artists/${value}?app_id=${bitApiKey}`;
+var concertURL = `https://rest.bandsintown.com/artists/${value}/events?app_id=${bitApiKey}`;
 
 var concert = "concert-this";
 var SPOTIFY_THIS_SONG = "spotify-this-song";
@@ -59,14 +60,20 @@ function concertAPI() {
     console.log(concertURL);
     axios.get(concertURL).then(
         function (concertData) {
-            console.log(`Artist Name: ${concertData.data.name}`);
-            console.log(`Upcoming Events: ${concertData.data.upcoming_event_count}`);
+            
+            for (var i = 0; i < concertData.data.length; i++) {
+                console.log(`${i+1}`);
+                console.log(`Name of Artist: ${concertData.data[0].artist.name}`);
+                console.log(`Venue name: ${concertData.data[i].venue.name}`);
+                console.log(`Venue location: ${concertData.data[i].venue.city}, ${concertData.data[i].venue.region}`);
+                console.log(moment(concertData.data[i].datetime).format('L'));
+                console.log("------------------------------------")
+            }
         }
     )
 }
 
 function spotifyAPI() {
-
     spotify.search({ type: 'track', query: value, limit: 1 }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
